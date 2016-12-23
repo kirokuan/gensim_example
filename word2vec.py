@@ -11,7 +11,7 @@ import os
 
 pp= pprint.PrettyPrinter(indent=4)
 _file=sys.argv[1]
-root='/tmp2/yckuan/data/new/'
+root='/tmp2/yckuan/data/filter2/'
 batch=10000
 for file in os.listdir(root):
     if fnmatch.fnmatch(file,_file):
@@ -25,9 +25,9 @@ for file in os.listdir(root):
             except:
 		print "ex"
 pp.pprint('read done')	
-size=sys.argv[2]
+size=int(sys.argv[2])
 model = gensim.models.Word2Vec(x, min_count=1, size=size)# import modules & set up logging
-model.save('word2vec.'+_file.replace('*','')+'.'+str(size)+'.model')
+model.save('../model/word2vec.'+_file.replace('*','')+'.'+str(size)+'.model')
 pp.pprint('done')
 
 
